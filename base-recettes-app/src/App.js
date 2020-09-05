@@ -38,6 +38,12 @@ class App extends Component {
     this.setState({ recettes });
   };
 
+  supprimerRecette = (key) => {
+    const recette = { ...this.state.recettes };
+    recettes[key] = null;
+    this.setState({ recettes });
+  };
+
   chargerExemple = () => this.setState({ recettes });
 
   render() {
@@ -49,10 +55,12 @@ class App extends Component {
         <Header pseudo={this.state.pseudo} />
         <div className="cards">{cards}</div>
         <Admin
+          pseudo={this.state.pseudo}
           recettes={this.state.recettes}
           ajouterRecette={this.ajouterRecette}
           modifierRecette={this.modifierRecette}
           chargerExemple={this.chargerExemple}
+          supprimerRecette={this.supprimerRecette}
         ></Admin>
       </div>
     );
